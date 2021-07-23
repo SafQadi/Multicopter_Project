@@ -269,9 +269,9 @@ int main(void)
 //  W25qxx_EraseSector(Address);
 
 
-  CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-  DWT->CYCCNT = 0;
-  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+	DWT->CYCCNT = 0;
+	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 
   /* USER CODE END 2 */
  
@@ -284,7 +284,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  S_cycle = DWT->CYCCNT;
+	S_cycle = DWT->CYCCNT;
 
 // --------------------------------------------------- calibration --------------------------------------------------
 
@@ -299,27 +299,27 @@ int main(void)
 
 //	  Txdata = (uint8_t)(get_roll_angle() + 55 );
 
-	  Batt_L_count++;
-	  if (Batt_L_count == 125){
+	Batt_L_count++;
+	if (Batt_L_count == 125){
 
-	  HAL_ADC_Start(&hadc2);
-	  if (HAL_ADC_PollForConversion(&hadc2, 5) == HAL_OK){
+	HAL_ADC_Start(&hadc2);
+	if (HAL_ADC_PollForConversion(&hadc2, 5) == HAL_OK){
 
-		  Batt_volt = HAL_ADC_GetValue(&hadc2) / 1.087;
-	  }
-	  HAL_ADC_Stop(&hadc2);
+	Batt_volt = HAL_ADC_GetValue(&hadc2) / 1.087;
+	}
+	HAL_ADC_Stop(&hadc2);
 
-	  Batt_av_count ++;
-	  Batt_arr[Batt_av_count] = Batt_volt;
-	  Batt_av = (Batt_arr[0]+Batt_arr[1]+Batt_arr[2]+Batt_arr[3]+Batt_arr[4])/5;
+	Batt_av_count ++;
+	Batt_arr[Batt_av_count] = Batt_volt;
+	Batt_av = (Batt_arr[0]+Batt_arr[1]+Batt_arr[2]+Batt_arr[3]+Batt_arr[4])/5;
 
 //      W25qxx_WriteByte(Txdata, Address);
 //	    W25qxx_ReadByte(&Rxdata, Address);
 //      Address+=8;
 
-	  if(Batt_av_count > 3)Batt_av_count = -1;
+	if(Batt_av_count > 3)Batt_av_count = -1;
 
-	  Batt_L_count =0;
+	Batt_L_count =0;
 	  }
 
 // ------------------------------------------- flash  ----------------------------
@@ -338,93 +338,91 @@ int main(void)
 	  if (PID_change_counter == 500){
 		  PID_change_counter = 0;
 
-           if (PID_select_ch() > 1250 && PID_select_ch() <= 1500)change_term = 1;
+	       if (PID_select_ch() > 1250 && PID_select_ch() <= 1500)change_term = 1;
 	  else if (PID_select_ch() > 1500 && PID_select_ch() <= 1830)change_term = 2;
 	  else if (PID_select_ch() > 1830)change_term = 3;
 	  else change_term = 0;
-           change_term_signal = 0;
+	   change_term_signal = 0;
+		  
 
-	  if (PID_change_ch() > 1700){  // increase PID value
-		      if (change_term != 0)change_term_signal = 1;
+	if (PID_change_ch() > 1700){  // increase PID value
+	      if (change_term != 0)change_term_signal = 1;
 
-		      if (change_term == 1){  // only P value up
-		    	  	  	  	  	    if (flight_mode == 1){  // gyro mode
-		    	                    Roll_PID.setP(Roll_PID.getP()   + 0.01);    if (Roll_PID.getP() > 5.0)Roll_PID.setP(5.0);
-		                            Pitch_PID.setP(Pitch_PID.getP() + 0.01);    if (Pitch_PID.getP() > 3.0)Pitch_PID.setP(3.0);
-//		                            Yaw_PID.setP(Yaw_PID.getP()     + 0.01);    if (Yaw_PID.getP() > 3.0)Yaw_PID.setP(3.0);
-		    	  	  	  	  	    					 }
+		if (change_term == 1){  // only P value up
+			if (flight_mode == 1){  // gyro mode
+				Roll_PID.setP(Roll_PID.getP()   + 0.01);    if (Roll_PID.getP() > 5.0)Roll_PID.setP(5.0);
+				Pitch_PID.setP(Pitch_PID.getP() + 0.01);    if (Pitch_PID.getP() > 3.0)Pitch_PID.setP(3.0);
+				// Yaw_PID.setP(Yaw_PID.getP()     + 0.01);    if (Yaw_PID.getP() > 3.0)Yaw_PID.setP(3.0);
+								 }
 
-		    	     	 	 	 	if (flight_mode == 2){  // level mode
-		    	     	 	 	 	ROLL_SP.set_Level_P(ROLL_SP.get_Level_P()   + 0.01);    if (ROLL_SP.get_Level_P() > 2.0)ROLL_SP.set_Level_P(2.0);
-		    	     	 	 	    Pitch_SP.set_Level_P(Pitch_SP.get_Level_P() + 0.01);    if (Pitch_SP.get_Level_P() > 2.6)Pitch_SP.set_Level_P(2.6);
+			if (flight_mode == 2){  // level mode
+				ROLL_SP.set_Level_P(ROLL_SP.get_Level_P()   + 0.01);    if (ROLL_SP.get_Level_P() > 2.0)ROLL_SP.set_Level_P(2.0);
+				Pitch_SP.set_Level_P(Pitch_SP.get_Level_P() + 0.01);    if (Pitch_SP.get_Level_P() > 2.6)Pitch_SP.set_Level_P(2.6);
 		    	     	 	 	 						 }
 		                           }
-		 else if (change_term == 2){ // only I value up
-			 	 	 	 	 	 	if (flight_mode == 1){  // gyro mode
-			                        Roll_PID.setI(Roll_PID.getI()   + 0.1); if (Roll_PID.getI()  > 10.0)Roll_PID.setI(10.0);
-		                            Pitch_PID.setI(Pitch_PID.getI() + 0.1); if (Pitch_PID.getI() > 10.0)Pitch_PID.setI(10.0);
-//		                            Yaw_PID.setI(Yaw_PID.getI()     + 0.1); if (Yaw_PID.getI()   > 10.0)Yaw_PID.setI(10.0);
+		else if (change_term == 2){ // only I value up
+			if (flight_mode == 1){  // gyro mode
+				Roll_PID.setI(Roll_PID.getI()   + 0.1); if (Roll_PID.getI()  > 10.0)Roll_PID.setI(10.0);
+				Pitch_PID.setI(Pitch_PID.getI() + 0.1); if (Pitch_PID.getI() > 10.0)Pitch_PID.setI(10.0);
+				// Yaw_PID.setI(Yaw_PID.getI()     + 0.1); if (Yaw_PID.getI()   > 10.0)Yaw_PID.setI(10.0);
 			 	 	 	 	 	 						 }
 
-			 	 					if (flight_mode == 2){  // level mode
-			    	     	 	 	ROLL_SP.set_MaxAngle(ROLL_SP.get_MaxAngle()   + 1.0f);    if (ROLL_SP.get_MaxAngle() > 30.0)ROLL_SP.set_MaxAngle(30.0);
-			    	     	 	 	Pitch_SP.set_MaxAngle(Pitch_SP.get_MaxAngle() + 1.0f);    if (Pitch_SP.get_MaxAngle() > 30.0)Pitch_SP.set_MaxAngle(30.0);
+		if (flight_mode == 2){  // level mode
+				ROLL_SP.set_MaxAngle(ROLL_SP.get_MaxAngle()   + 1.0f);    if (ROLL_SP.get_MaxAngle() > 30.0)ROLL_SP.set_MaxAngle(30.0);
+				Pitch_SP.set_MaxAngle(Pitch_SP.get_MaxAngle() + 1.0f);    if (Pitch_SP.get_MaxAngle() > 30.0)Pitch_SP.set_MaxAngle(30.0);
 			 	 						 	 	 	 	 }
 		                           }
-		 else if (change_term == 3){ // only D value up
-			 	 	 	 	 	 	if (flight_mode == 1){  // gyro mode
-			                        Roll_PID.setD(Roll_PID.getD()   + 0.1);    if (Roll_PID.getD() > 10.0)Roll_PID.setD(10.0);
-		                            Pitch_PID.setD(Pitch_PID.getD() + 0.1);    if (Pitch_PID.getD() > 10.0)Pitch_PID.setD(10.0);
+		else if (change_term == 3){ // only D value up
+			if (flight_mode == 1){  // gyro mode
+				Roll_PID.setD(Roll_PID.getD()   + 0.1);    if (Roll_PID.getD() > 10.0)Roll_PID.setD(10.0);
+				Pitch_PID.setD(Pitch_PID.getD() + 0.1);    if (Pitch_PID.getD() > 10.0)Pitch_PID.setD(10.0);
 			 	 	 	 	 	 						 }
 
-			 	 	 	 	 	 	if (flight_mode == 2){  // level mode
-				    	     	 	ROLL_SP.set_RC_rate(ROLL_SP.get_RC_rate()   + 0.1f);    if (ROLL_SP.get_RC_rate()  > 2.0)ROLL_SP.set_RC_rate(2.0);
-				    	     	 	Pitch_SP.set_RC_rate(Pitch_SP.get_RC_rate() + 0.1f);    if (Pitch_SP.get_RC_rate() > 2.0)Pitch_SP.set_RC_rate(2.0);
+		if (flight_mode == 2){  // level mode
+				ROLL_SP.set_RC_rate(ROLL_SP.get_RC_rate()   + 0.1f);    if (ROLL_SP.get_RC_rate()  > 2.0)ROLL_SP.set_RC_rate(2.0);
+				Pitch_SP.set_RC_rate(Pitch_SP.get_RC_rate() + 0.1f);    if (Pitch_SP.get_RC_rate() > 2.0)Pitch_SP.set_RC_rate(2.0);
 			 	 	 	 	 	 						 }
 		                           }
-
 	                             }
 
-	  else if (PID_change_ch() < 1300){ // increase PID value
-		      if (change_term != 0)change_term_signal = 2;
+	else if (PID_change_ch() < 1300){ // increase PID value
+		if (change_term != 0)change_term_signal = 2;
 
-	          if (change_term == 1){  // only P value down
-	        	  	  	  	  	    if (flight_mode == 1){  // gyro mode
-	        	                    Roll_PID.setP(Roll_PID.getP()   - 0.01);    if (Roll_PID.getP() < 0.2)Roll_PID.setP(0.1);
-	                                Pitch_PID.setP(Pitch_PID.getP() - 0.01);    if (Pitch_PID.getP() < 0.2)Pitch_PID.setP(0.1);
-//	                                Yaw_PID.setP(Yaw_PID.getP()     - 0.01);    if (Yaw_PID.getP() < 0.2)Yaw_PID.setP(0.1);
+		if (change_term == 1){  // only P value down
+			if (flight_mode == 1){  // gyro mode
+				Roll_PID.setP(Roll_PID.getP()   - 0.01);    if (Roll_PID.getP() < 0.2)Roll_PID.setP(0.1);
+				Pitch_PID.setP(Pitch_PID.getP() - 0.01);    if (Pitch_PID.getP() < 0.2)Pitch_PID.setP(0.1);
+				// Yaw_PID.setP(Yaw_PID.getP()     - 0.01);    if (Yaw_PID.getP() < 0.2)Yaw_PID.setP(0.1);
 	        	  	  	  	  	    					 }
 
-	        	  	  	  	  	    if (flight_mode == 2){  // level mode
-			    	     	 	 	ROLL_SP.set_Level_P(ROLL_SP.get_Level_P()   - 0.01);    if (ROLL_SP.get_Level_P()  < 0.2)ROLL_SP.set_Level_P(0.1);
-			    	     	 	 	Pitch_SP.set_Level_P(Pitch_SP.get_Level_P() - 0.01);    if (Pitch_SP.get_Level_P() < 0.2)Pitch_SP.set_Level_P(0.1);
+			if (flight_mode == 2){  // level mode
+				ROLL_SP.set_Level_P(ROLL_SP.get_Level_P()   - 0.01);    if (ROLL_SP.get_Level_P()  < 0.2)ROLL_SP.set_Level_P(0.1);
+				Pitch_SP.set_Level_P(Pitch_SP.get_Level_P() - 0.01);    if (Pitch_SP.get_Level_P() < 0.2)Pitch_SP.set_Level_P(0.1);
 	        	  	  	  	  	    					 }
 	                               }
-	     else if (change_term == 2){  // only I value down
-	    	 	 	 	 	 	 	if (flight_mode == 1){  // gyro mode
-	    	                        Roll_PID.setI(Roll_PID.getI()   - 0.1); if (Roll_PID.getI()  < 0.2)Roll_PID.setI(0.1);
-	                                Pitch_PID.setI(Pitch_PID.getI() - 0.1); if (Pitch_PID.getI() < 0.2)Pitch_PID.setI(0.1);
-//	                                Yaw_PID.setI(Yaw_PID.getI()     - 0.1); if (Yaw_PID.getI()   < 0.2)Yaw_PID.setI(0.1);
+		else if (change_term == 2){  // only I value down
+			if (flight_mode == 1){  // gyro mode
+				Roll_PID.setI(Roll_PID.getI()   - 0.1); if (Roll_PID.getI()  < 0.2)Roll_PID.setI(0.1);
+				Pitch_PID.setI(Pitch_PID.getI() - 0.1); if (Pitch_PID.getI() < 0.2)Pitch_PID.setI(0.1);
+				// Yaw_PID.setI(Yaw_PID.getI()     - 0.1); if (Yaw_PID.getI()   < 0.2)Yaw_PID.setI(0.1);
 	    	 	 	 	 	 	 						 }
 
-	    	 	 	 	 	 	 	if (flight_mode == 2){  // level mode
-				    	     	 	ROLL_SP.set_MaxAngle(ROLL_SP.get_MaxAngle()   - 1.0f);    if (ROLL_SP.get_MaxAngle() < 6.0)ROLL_SP.set_MaxAngle(5.0);
-				    	     	 	Pitch_SP.set_MaxAngle(Pitch_SP.get_MaxAngle() - 1.0f);    if (Pitch_SP.get_MaxAngle() < 6.0)Pitch_SP.set_MaxAngle(5.0);
+			if (flight_mode == 2){  // level mode
+				ROLL_SP.set_MaxAngle(ROLL_SP.get_MaxAngle()   - 1.0f);    if (ROLL_SP.get_MaxAngle() < 6.0)ROLL_SP.set_MaxAngle(5.0);
+				Pitch_SP.set_MaxAngle(Pitch_SP.get_MaxAngle() - 1.0f);    if (Pitch_SP.get_MaxAngle() < 6.0)Pitch_SP.set_MaxAngle(5.0);
 	    	 	 	 	 	 	 						 }
 	                               }
 	     else if (change_term == 3){  // only D value down
 	    	 	 	 	 	 	 	if (flight_mode == 1){  // gyro mode
-	    	                        Roll_PID.setD(Roll_PID.getD()   - 0.1);    if (Roll_PID.getD() < 0.2)Roll_PID.setD(0.2);
-	                                Pitch_PID.setD(Pitch_PID.getD() - 0.1);    if (Pitch_PID.getD() < 0.2)Pitch_PID.setD(0.2);
+				Roll_PID.setD(Roll_PID.getD()   - 0.1);    if (Roll_PID.getD() < 0.2)Roll_PID.setD(0.2);
+				Pitch_PID.setD(Pitch_PID.getD() - 0.1);    if (Pitch_PID.getD() < 0.2)Pitch_PID.setD(0.2);
 	    	 	 	 	 	 	 						 }
 
-	 	 	 						if (flight_mode == 2){  // level mode
-									ROLL_SP.set_RC_rate(ROLL_SP.get_RC_rate()   - 0.1f);    if (ROLL_SP.get_RC_rate()  < 0.5)ROLL_SP.set_RC_rate(0.4);
-									Pitch_SP.set_RC_rate(Pitch_SP.get_RC_rate() - 0.1f);    if (Pitch_SP.get_RC_rate() < 0.5)Pitch_SP.set_RC_rate(0.4);
-	 	 	 						               	     }
-
+			if (flight_mode == 2){  // level mode
+				ROLL_SP.set_RC_rate(ROLL_SP.get_RC_rate()   - 0.1f);    if (ROLL_SP.get_RC_rate()  < 0.5)ROLL_SP.set_RC_rate(0.4);
+				Pitch_SP.set_RC_rate(Pitch_SP.get_RC_rate() - 0.1f);    if (Pitch_SP.get_RC_rate() < 0.5)Pitch_SP.set_RC_rate(0.4);
+	 	 	 						               	    		 }
 	                             }
-
 	  }
 
 	  }
@@ -450,11 +448,11 @@ int main(void)
 
 	 	 if (flight_mode == 1) {
 
-		 	  Roll_setpoint = ROLL_SP.RC_rate_manual(roll_ch())    * ROLL_SP.get_RC_rate();
-		 	  Pitch_setpoint = Pitch_SP.RC_rate_manual(pitch_ch()) * Pitch_SP.get_RC_rate();
-		       if (throttle_ch() > 1050 ){
-		 	  Yaw_setpoint = Yaw_SP.RC_rate_manual(yaw_ch())       * Yaw_SP.get_RC_rate();
-		       } else Yaw_setpoint = 0;
+			Roll_setpoint = ROLL_SP.RC_rate_manual(roll_ch())    * ROLL_SP.get_RC_rate();
+			Pitch_setpoint = Pitch_SP.RC_rate_manual(pitch_ch()) * Pitch_SP.get_RC_rate();
+			if (throttle_ch() > 1050 ){
+			  Yaw_setpoint = Yaw_SP.RC_rate_manual(yaw_ch())       * Yaw_SP.get_RC_rate();
+			} else Yaw_setpoint = 0;
 
 			 flight_mode_signal(1);
 	 	 }
@@ -462,20 +460,20 @@ int main(void)
 
 	 	 if (flight_mode == 2) {
 
-		      roll_rc = ROLL_SP.RC_rate_manual(roll_ch());
-		      pitch_rc= Pitch_SP.RC_rate_manual(pitch_ch());
+			roll_rc = ROLL_SP.RC_rate_manual(roll_ch());
+			pitch_rc= Pitch_SP.RC_rate_manual(pitch_ch());
 
-		      roll_angle_level  =   get_roll_angle()  * ROLL_SP.get_MaxAngle(); // the higher the max angle value, the lower he final angle during flight
-		      pitch_angle_level = - get_pitch_angle() * Pitch_SP.get_MaxAngle();
+			roll_angle_level  =   get_roll_angle()  * ROLL_SP.get_MaxAngle(); // the higher the max angle value, the lower he final angle during flight
+			pitch_angle_level = - get_pitch_angle() * Pitch_SP.get_MaxAngle();
 
-		      Roll_setpoint  = (roll_rc  - roll_angle_level)  * ROLL_SP.get_Level_P(); // levle P gain
-		 	  Pitch_setpoint = (pitch_rc - pitch_angle_level) * Pitch_SP.get_Level_P();
+			Roll_setpoint  = (roll_rc  - roll_angle_level)  * ROLL_SP.get_Level_P(); // levle P gain
+			  Pitch_setpoint = (pitch_rc - pitch_angle_level) * Pitch_SP.get_Level_P();
 
-		 	  if (throttle_ch() > 1050 ){
-		 	  Yaw_setpoint = Yaw_SP.RC_rate_manual(yaw_ch());
-		 	  } else Yaw_setpoint = 0;
+			  if (throttle_ch() > 1050 ){
+			  Yaw_setpoint = Yaw_SP.RC_rate_manual(yaw_ch());
+			  } else Yaw_setpoint = 0;
 
-		      flight_mode_signal(2);
+			flight_mode_signal(2);
 
 	 	 }
 
@@ -499,39 +497,39 @@ int main(void)
 	 	 }
 
 
-	      Roll_PID_out  = Roll_PID.updatePID( filter_RC_roll.Biquad_filter(Roll_setpoint),   filter_X.Pt1_filter(gyro_X()), filter_Dterm_X.Biquad_filter(gyro_X()), Loop_time, flight_mode);
-	      Pitch_PID_out = Pitch_PID.updatePID(filter_RC_pitch.Biquad_filter(Pitch_setpoint), filter_Y.Pt1_filter(gyro_Y()), filter_Dterm_Y.Biquad_filter(gyro_Y()), Loop_time, flight_mode);
-	      Yaw_PID_out   = Yaw_PID.updatePID(  filter_RC_yaw.Biquad_filter(Yaw_setpoint),     filter_Z.Pt1_filter(-gyro_Z()),filter_Dterm_Z.Biquad_filter(-gyro_Z()),Loop_time, flight_mode);
+		Roll_PID_out  = Roll_PID.updatePID( filter_RC_roll.Biquad_filter(Roll_setpoint),   filter_X.Pt1_filter(gyro_X()), filter_Dterm_X.Biquad_filter(gyro_X()), Loop_time, flight_mode);
+		Pitch_PID_out = Pitch_PID.updatePID(filter_RC_pitch.Biquad_filter(Pitch_setpoint), filter_Y.Pt1_filter(gyro_Y()), filter_Dterm_Y.Biquad_filter(gyro_Y()), Loop_time, flight_mode);
+		Yaw_PID_out   = Yaw_PID.updatePID(  filter_RC_yaw.Biquad_filter(Yaw_setpoint),     filter_Z.Pt1_filter(-gyro_Z()),filter_Dterm_Z.Biquad_filter(-gyro_Z()),Loop_time, flight_mode);
 
 
 // --------------------------------------------------- DEBUG --------------------------------------------------
 
-		   	  roll_P = Roll_PID.getP();
-		   	  roll_I = Roll_PID.getI();
-		   	  roll_D = Roll_PID.getD();
+		roll_P = Roll_PID.getP();
+		roll_I = Roll_PID.getI();
+		roll_D = Roll_PID.getD();
 
-		   	  pitch_P = Pitch_PID.getP();
-		   	  pitch_I = Pitch_PID.getI();
-		      pitch_D = Pitch_PID.getD();
+		pitch_P = Pitch_PID.getP();
+		pitch_I = Pitch_PID.getI();
+		pitch_D = Pitch_PID.getD();
 
-		   	  yaw_P = Yaw_PID.getP();
-		   	  yaw_I = Yaw_PID.getI();
-//
-		   	  roll_gyro   =  gyro_X();
-		      roll_gyro_f =  filter_X.Pt1_filter(gyro_X());
-		      roll_Dgyro_f = filter_Dterm_X.Biquad_filter(gyro_X());
-		   	  roll_RC_f   =  filter_RC_roll.Biquad_filter(Roll_setpoint);
+		yaw_P = Yaw_PID.getP();
+		yaw_I = Yaw_PID.getI();
 
-		   	  roll_error  =  Roll_PID.getError();
-		   	  roll_P_part =  Roll_PID.getP_part();
-		   	  roll_I_part =  Roll_PID.getI_part();
-		   	  roll_D_part =  Roll_PID.getD_part();
-		   	  roll_Dterm  =  Roll_PID.getDterm();
-		   	  roll_PID_sum = Roll_PID.get_PIDsum();
-//
-		   	  Level_P         = ROLL_SP.get_Level_P();
-		   	  max_level_angle = ROLL_SP.get_MaxAngle();
-		   	  RC_rate_scale   = ROLL_SP.get_RC_rate();
+		roll_gyro   =  gyro_X();
+		roll_gyro_f =  filter_X.Pt1_filter(gyro_X());
+		roll_Dgyro_f = filter_Dterm_X.Biquad_filter(gyro_X());
+		roll_RC_f   =  filter_RC_roll.Biquad_filter(Roll_setpoint);
+
+		roll_error  =  Roll_PID.getError();
+		roll_P_part =  Roll_PID.getP_part();
+		roll_I_part =  Roll_PID.getI_part();
+		roll_D_part =  Roll_PID.getD_part();
+		roll_Dterm  =  Roll_PID.getDterm();
+		roll_PID_sum = Roll_PID.get_PIDsum();
+
+		Level_P         = ROLL_SP.get_Level_P();
+		max_level_angle = ROLL_SP.get_MaxAngle();
+		RC_rate_scale   = ROLL_SP.get_RC_rate();
 
 
 // --------------------------------------------------- BATTERY WARRNING --------------------------------------------------
@@ -552,9 +550,7 @@ int main(void)
 
 // --------------------------------------------------- MOTOR and ESC control --------------------------------------------------
 
-
 	 	     control_motors(idle_speed);
-
 
 	         if (armed_s() == 1){
 
@@ -597,26 +593,25 @@ int main(void)
 		 	      esc_4 = 1000;
 	         }
 
-//	 		  esc_counter++;
-//	 		  if (esc_counter == 2){
+//	          esc_counter++;
+//	          if (esc_counter == 2){
 
 	           TIM16->CCR1 = esc_1;  // modulating the pulse width
 	           TIM17->CCR1 = esc_2;
 	           TIM4->CCR1  = esc_3;  // modulating the pulse width
 	           TIM4->CCR2  = esc_4;
-//	           TIM4->CCR3 = esc_3;
-//	           TIM4->CCR4 = esc_4;
+
 	           TIM4->CNT  = 5000 - 1; // ARR   // 400 Hz 2 ms pulse high and 0.5ms pulse low*/
 	           TIM16->CNT = 5000 - 1;
 	           TIM17->CNT = 5000 - 1;
 
-//	          esc_counter = 0;
+//	           esc_counter = 0;
 //	        	  }
 
 
-      Elapsed_time = (float) (DWT->CYCCNT - S_cycle) / 72000000.0;
-      while((DWT->CYCCNT - S_cycle) < 150000); // 150.000  480 Hz   - for 1khz = 1.045ms
-      Loop_time = (float) (DWT->CYCCNT - S_cycle ) / 72000000.0;
+	Elapsed_time = (float) (DWT->CYCCNT - S_cycle) / 72000000.0;
+	while((DWT->CYCCNT - S_cycle) < 150000); // 150.000  480 Hz   - for 1khz = 1.045ms
+	Loop_time = (float) (DWT->CYCCNT - S_cycle ) / 72000000.0;
 
   }
   /* USER CODE END 3 */
