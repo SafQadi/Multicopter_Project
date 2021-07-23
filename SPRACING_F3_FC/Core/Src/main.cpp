@@ -501,7 +501,7 @@ int main(void)
 
 	      Roll_PID_out  = Roll_PID.updatePID( filter_RC_roll.Biquad_filter(Roll_setpoint),   filter_X.Pt1_filter(gyro_X()), filter_Dterm_X.Biquad_filter(gyro_X()), Loop_time, flight_mode);
 	      Pitch_PID_out = Pitch_PID.updatePID(filter_RC_pitch.Biquad_filter(Pitch_setpoint), filter_Y.Pt1_filter(gyro_Y()), filter_Dterm_Y.Biquad_filter(gyro_Y()), Loop_time, flight_mode);
-		  Yaw_PID_out   = Yaw_PID.updatePID(  filter_RC_yaw.Biquad_filter(Yaw_setpoint),     filter_Z.Pt1_filter(-gyro_Z()),filter_Dterm_Z.Biquad_filter(-gyro_Z()),Loop_time, flight_mode);
+	      Yaw_PID_out   = Yaw_PID.updatePID(  filter_RC_yaw.Biquad_filter(Yaw_setpoint),     filter_Z.Pt1_filter(-gyro_Z()),filter_Dterm_Z.Biquad_filter(-gyro_Z()),Loop_time, flight_mode);
 
 
 // --------------------------------------------------- DEBUG --------------------------------------------------
