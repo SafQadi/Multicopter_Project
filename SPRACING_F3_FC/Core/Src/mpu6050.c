@@ -207,16 +207,6 @@ float accel_Y (void) { return Ay; }
 float accel_Z (void) { return Az; }
 
 
-/*
- float gyro_X (void) {MPU6050_Read_Gyro (); Gx = (Gyro_X_RAW - gyro_x_cal) / 131.0; return Gx; }
-float gyro_Y (void) {MPU6050_Read_Gyro (); Gy = (Gyro_Y_RAW - gyro_y_cal) / 131.0; return Gy; }
-float gyro_Z (void) {MPU6050_Read_Gyro (); Gz = (Gyro_Z_RAW - gyro_z_cal) / 131.0; return Gz; }
-
-float accel_X (void) {MPU6050_Read_Accel (); Ax = (Accel_X_RAW - acc_x_cal) / 16384.0; return Ax; }
-float accel_Y (void) {MPU6050_Read_Accel (); Ay = (Accel_Y_RAW - acc_y_cal) / 16384.0; return Ay; }
-float accel_Z (void) {MPU6050_Read_Accel (); Az = (Accel_Z_RAW ) / 16384.0; return Az; }
-*/
-
 
 
 

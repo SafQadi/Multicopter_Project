@@ -1,3 +1,3 @@
-alarms.c:22:6:error_signal	16	static
-alarms.c:42:6:flight_mode_signal	16	static
-alarms.c:61:6:buzzer_signal	16	static
+alarms.c:19:6:error_signal	16	static
+alarms.c:39:6:flight_mode_signal	16	static
+alarms.c:58:6:buzzer_signal	16	static

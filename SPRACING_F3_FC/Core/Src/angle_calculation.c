@@ -44,25 +44,12 @@ void calc_angles (float dt){
        angle_gY += (gyro_Y() * -dt); // -dt to synchronize the gyro direction with the acc.
        angle_gZ += (gyro_Z() *  dt);
 
-//       if (angle_gZ < 0) angle_gZ += 360;
-//       else if (angle_gZ >= 360) angle_gZ -= 360;
-
        angle_gY += angle_gX * sin(gyro_Z() * dt * DEG_TO_RAD);
        angle_gX -= angle_gY * sin(gyro_Z() * dt * DEG_TO_RAD);
        angle_gX  = COM_G_GAIN * angle_gX +  COM_A_GAIN * angle_aX ;
 	   angle_gY  = COM_G_GAIN * angle_gY +  COM_A_GAIN * angle_aY ;
 	   roll_angle  = angle_gX  ;
 	   pitch_angle = angle_gY ;
-
-// ------------------------- or ----------------------------
-
-//       angle_gY   -= angle_gX * sin(gyro_Z() * dt * DEG_TO_RAD);
-//       angle_gX   += angle_gY * sin(gyro_Z() * dt * DEG_TO_RAD);
-//       angle_gX  = COM_G_GAIN * angle_gX +  COM_A_GAIN * angle_aX ;
-//       angle_gY  = COM_G_GAIN * angle_gY +  COM_A_GAIN * angle_aY ;
-//       roll_angle  = angle_gX  ;
-//       pitch_angle = angle_gY ;
-
 
 
 // ------------------------------------ mode 3 ---------------------------------------------

@@ -4,7 +4,6 @@
  *  Created on: Feb 11, 2020
  *      Author: Dr. Safwan Al-Qadhi
  *      Email: saq.qadi@gmail.com
-
  */
 
 
@@ -14,9 +13,7 @@ uint8_t error, error_counter, error_led;
 uint8_t flight_mode, flight_mode_counter, flight_mode_led;
 uint8_t buzzer_mode, buzzer_mode_counter, buzzer_mode_led;
 uint16_t buzzer_last;
-
 uint32_t error_timer, flight_mode_timer, buzzer_mode_timer;
-
 
 
 void error_signal(uint8_t e) {

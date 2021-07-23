@@ -43,7 +43,6 @@
 #include "w25qxxConf.h"
 
 
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,8 +67,6 @@ filter filter_Dterm_Z(Dterm_cutoff_freq, 0.002);
 filter filter_RC_roll(RC_cutoff_freq, 0.002);
 filter filter_RC_pitch(RC_cutoff_freq, 0.002);
 filter filter_RC_yaw(RC_cutoff_freq, 0.002);
-
-
 
 
 /* USER CODE END PTD */
@@ -178,10 +175,6 @@ uint8_t Rxdata;
 uint32_t    Address;
 
 
-
-
-
-
 /* USER CODE END 0 */
 
 /**
@@ -271,11 +264,6 @@ int main(void)
 
   // ----------- save calibration data to EEPROM ------
 
-
-
-
-  //------------------
-
 //  W25qxx_Init();
 //  Address = 0x000000;
 //  W25qxx_EraseSector(Address);
@@ -285,10 +273,7 @@ int main(void)
   DWT->CYCCNT = 0;
   DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 
-
-
   /* USER CODE END 2 */
- 
  
 
   /* Infinite loop */
@@ -300,8 +285,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  S_cycle = DWT->CYCCNT;
-
-
 
 // --------------------------------------------------- calibration --------------------------------------------------
 
@@ -521,8 +504,6 @@ int main(void)
 		  Yaw_PID_out   = Yaw_PID.updatePID(  filter_RC_yaw.Biquad_filter(Yaw_setpoint),     filter_Z.Pt1_filter(-gyro_Z()),filter_Dterm_Z.Biquad_filter(-gyro_Z()),Loop_time, flight_mode);
 
 
-
-
 // --------------------------------------------------- DEBUG --------------------------------------------------
 
 		   	  roll_P = Roll_PID.getP();
@@ -615,8 +596,6 @@ int main(void)
 		 	      esc_3 = 1000;
 		 	      esc_4 = 1000;
 	         }
-
-
 
 //	 		  esc_counter++;
 //	 		  if (esc_counter == 2){

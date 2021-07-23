@@ -1744,9 +1744,9 @@ float RC_rate::get_RC_rate(){
  8001156:	4770      	bx	lr
 
 08001158 <error_signal>:
-
+uint8_t buzzer_mode, buzzer_mode_counter, buzzer_mode_led;
+uint16_t buzzer_last;
 uint32_t error_timer, flight_mode_timer, buzzer_mode_timer;
-
 
 
 void error_signal(uint8_t e) {
@@ -5026,7 +5026,6 @@ int main(void)
  8002f56:	edc3 7a00 	vstr	s15, [r3]
 
 
-
 // --------------------------------------------------- DEBUG --------------------------------------------------
 
 		   	  roll_P = Roll_PID.getP();
@@ -5557,7 +5556,7 @@ int main(void)
  80034b2:	4b2e      	ldr	r3, [pc, #184]	; (800356c <main+0x1964>)
  80034b4:	f44f 727a 	mov.w	r2, #1000	; 0x3e8
  80034b8:	801a      	strh	r2, [r3, #0]
-
+	         }
 
 //	 		  esc_counter++;
 //	 		  if (esc_counter == 2){
