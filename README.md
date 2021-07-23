@@ -15,6 +15,7 @@ The transimitter uses PPM protocol with eigh channels at 2.4GHz to communicate w
 - Four channels are for Throttle, ROLL, Pitch, and Yaw. 
 - One channel for selecting the flight mode
 - Two channels are dedicated for adjusting the PIDs on flight. 
+<br />
 
 ## Electronic speed controller (ESC)
 The ESC are controlled by PWM at 480Hz. Four timers of the STM32F3 are used to generat the PWM signals 
