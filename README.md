@@ -1,6 +1,6 @@
 # Multicopter_Project
 
-In this project I am uisng an STM32F3 chip placed on SPRACINGF3 flight controller to controll the flight of a multicopter - Quadcopter. 
+In this project I am uisng an STM32F3 chip placed on SPRACINGF3 flight controller to controll a multicopter - Quadcopter. The code is built from sctratch. Timers are set to decode the reciever singals and generate the PWM signals for the speed controlles of the motors. A PID unit controlles the reaction of the copter in two different modes gyro and level mode. 
 <br /> 
 
 
