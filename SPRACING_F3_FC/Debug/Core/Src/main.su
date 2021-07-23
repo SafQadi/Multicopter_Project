@@ -1,0 +1,19 @@
+main.cpp:191:5:int main()	24	static
+main.cpp:650:6:void SystemClock_Config()	128	static
+main.cpp:697:13:void MX_ADC2_Init()	32	static
+main.cpp:752:13:void MX_I2C1_Init()	8	static
+main.cpp:798:13:void MX_SPI2_Init()	8	static
+main.cpp:838:13:void MX_TIM2_Init()	40	static
+main.cpp:886:13:void MX_TIM4_Init()	48	static
+main.cpp:951:13:void MX_TIM16_Init()	80	static
+main.cpp:1015:13:void MX_TIM17_Init()	80	static
+main.cpp:1079:13:void MX_USART2_UART_Init()	8	static
+main.cpp:1114:13:void MX_GPIO_Init()	48	static
+main.cpp:1160:1:int __io_putchar(int)	16	static
+main.cpp:1169:5:int _write(int, char*, int)	32	static
+main.cpp:1180:7:void writeToEEPROM(uint32_t, uint32_t)	24	static
+main.cpp:1204:11:uint32_t readFromEEPROM(uint32_t)	16	static
+main.cpp:1217:6:void Error_Handler()	4	static
+main.cpp:1223:1:void __static_initialization_and_destruction_0(int, int)	16	static
+main.cpp:1223:1:cpp)	8	static
+main.cpp:1223:1:cpp)	8	static

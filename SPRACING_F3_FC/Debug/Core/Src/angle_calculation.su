@@ -1,0 +1,8 @@
+angle_calculation.c:28:6:calc_angles	32	static
+angle_calculation.c:82:7:get_roll_angle	4	static
+angle_calculation.c:83:7:get_pitch_angle	4	static
+angle_calculation.c:84:7:get_yaw_angle	4	static
+angle_calculation.c:86:7:get_roll_angle_half	4	static
+angle_calculation.c:87:7:get_pitch_angle_half	4	static
+angle_calculation.c:89:7:get_angle_aX	4	static
+angle_calculation.c:90:7:get_angle_aY	4	static

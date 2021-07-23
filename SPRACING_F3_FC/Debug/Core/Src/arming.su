@@ -1,0 +1,3 @@
+arming.c:18:6:control_motors	16	static
+arming.c:36:9:start_speed	4	static
+arming.c:37:9:armed_s	4	static

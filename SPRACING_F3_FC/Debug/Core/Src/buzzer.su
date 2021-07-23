@@ -1,0 +1,11 @@
+buzzer.cpp:11:1:Buzzer::Buzzer()	16	static
+buzzer.cpp:14:1:Buzzer::~Buzzer()	16	static
+buzzer.cpp:14:1:virtual Buzzer::~Buzzer()	16	static
+buzzer.cpp:18:1:Buzzer::Buzzer(int)	16	static
+buzzer.cpp:23:6:void Buzzer::buzz()	16	static
+buzzer.cpp:28:6:void Buzzer::buzz(int)	16	static
+buzzer.cpp:33:6:void Buzzer::buzzBlocking(int)	16	static
+buzzer.cpp:41:6:void Buzzer::disable()	16	static
+buzzer.cpp:45:6:void Buzzer::enable()	16	static
+buzzer.cpp:50:6:bool Buzzer::isEnabled()	16	static
+buzzer.cpp:54:6:void Buzzer::doUpdate()	16	static

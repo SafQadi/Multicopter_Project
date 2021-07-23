@@ -1,0 +1,12 @@
+mpu6050.c:41:6:MPU6050_confirm	16	static
+mpu6050.c:66:6:MPU6050_Init	32	static
+mpu6050.c:107:6:MPU6050_calib_Gyro	16	static
+mpu6050.c:136:6:MPU6050_calib_Accel	16	static
+mpu6050.c:160:6:MPU6050_Read_Gyro	32	static
+mpu6050.c:179:6:MPU6050_Read_Accel	32	static
+mpu6050.c:201:7:gyro_X	4	static
+mpu6050.c:202:7:gyro_Y	4	static
+mpu6050.c:203:7:gyro_Z	4	static
+mpu6050.c:205:7:accel_X	4	static
+mpu6050.c:206:7:accel_Y	4	static
+mpu6050.c:207:7:accel_Z	4	static

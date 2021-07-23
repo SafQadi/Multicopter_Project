@@ -1,0 +1,7 @@
+cmath:106:3:constexpr float std::asin(float)	16	static
+cmath:184:3:constexpr float std::cos(float)	16	static
+cmath:425:3:constexpr float std::sin(float)	16	static
+Quaternion.cpp:15:6:void Quaternion::from_euler(float, float, float)	48	static
+Quaternion.cpp:33:7:float Quaternion::get_euler_roll() const	16	static
+Quaternion.cpp:39:7:float Quaternion::get_euler_pitch() const	16	static
+Quaternion.cpp:45:7:float Quaternion::get_euler_yaw() const	16	static

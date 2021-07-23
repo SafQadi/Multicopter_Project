@@ -1,0 +1,10 @@
+IC_ISR.c:32:6:HAL_TIM_IC_CaptureCallback	16	static
+IC_ISR.c:85:10:throttle_ch	4	static
+IC_ISR.c:86:10:roll_ch	4	static
+IC_ISR.c:87:10:pitch_ch	4	static
+IC_ISR.c:88:10:yaw_ch	4	static
+IC_ISR.c:89:10:F_mode_ch	4	static
+IC_ISR.c:90:10:Aux6_ch	4	static
+IC_ISR.c:91:10:PID_select_ch	4	static
+IC_ISR.c:92:10:PID_change_ch	4	static
+IC_ISR.c:95:6:PWM_ESC_tim_setup	4	static

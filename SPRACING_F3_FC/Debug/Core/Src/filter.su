@@ -1,0 +1,8 @@
+cmath:184:3:constexpr float std::cos(float)	16	static
+cmath:425:3:constexpr float std::sin(float)	16	static
+filter.cpp:13:1:filter::filter()	16	static
+filter.cpp:17:1:filter::~filter()	16	static
+filter.cpp:17:1:virtual filter::~filter()	16	static
+filter.cpp:22:1:filter::filter(float, float)	24	static
+filter.cpp:65:7:float filter::Biquad_filter(float)	16	static
+filter.cpp:77:7:float filter::Pt1_filter(float)	16	static

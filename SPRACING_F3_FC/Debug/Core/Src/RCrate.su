@@ -1,0 +1,11 @@
+RCrate.cpp:11:1:RC_rate::RC_rate()	16	static
+RCrate.cpp:14:1:RC_rate::~RC_rate()	16	static
+RCrate.cpp:14:1:virtual RC_rate::~RC_rate()	16	static
+RCrate.cpp:18:1:RC_rate::RC_rate(float, float, float)	24	static
+RCrate.cpp:25:7:float RC_rate::RC_rate_manual(int16_t)	16	static
+RCrate.cpp:39:6:void RC_rate::set_Level_P(float)	16	static
+RCrate.cpp:44:7:float RC_rate::get_Level_P()	16	static
+RCrate.cpp:50:6:void RC_rate::set_MaxAngle(float)	16	static
+RCrate.cpp:55:7:float RC_rate::get_MaxAngle()	16	static
+RCrate.cpp:60:6:void RC_rate::set_RC_rate(float)	16	static
+RCrate.cpp:65:7:float RC_rate::get_RC_rate()	16	static
