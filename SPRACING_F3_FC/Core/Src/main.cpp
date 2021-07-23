@@ -346,7 +346,7 @@ int main(void)
 		  
 
 	if (PID_change_ch() > 1700){  // increase PID value
-	      if (change_term != 0)change_term_signal = 1;
+	    if (change_term != 0)change_term_signal = 1;
 
 		if (change_term == 1){  // only P value up
 			if (flight_mode == 1){  // gyro mode
