@@ -12,13 +12,13 @@ The communication between gyro/accelerometer and the STM32F3 is achieved through
 
 ## The transmitter
 The transimitter uses PPM protocol with eigh channels at 2.4GHz to communicate with the copter. 
-- Four channels are for Throttle, ROLL, Pitch, and Yaw. 
+- Four channels for Throttle, Roll, Pitch, and Yaw. 
 - One channel for selecting the flight mode
 - Two channels are dedicated for adjusting the PIDs on flight. 
 <br />
 
 ## Electronic speed controller (ESC)
-The ESC are controlled by PWM at 480Hz. Four timers of the STM32F3 are used to generat the PWM signals 
+The ESCs are controlled by PWM signals at 480Hz. Four timers of the STM32F3 are used to generat the PWM signals 
 <br />
 <br /> 
 
