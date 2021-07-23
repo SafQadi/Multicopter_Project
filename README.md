@@ -5,14 +5,14 @@ In this project I am uisng an STM32F3 chip placed on SPRACINGF3 flight controlle
 
 
 ## Gyro/Accelerometer
-An MPU6050 Gyro/accelerometer chip is also placed on the SPRACINGF3 board.
+An MPU6050 Gyro/accelerometer chip is placed on the SPRACINGF3 board.
 The communication between gyro/accelerometer and the STM32F3 is achieved through an I2C.
 <br />
 
 
 ## The transmitter
-The transimitter uses PPM protocol with eigh channels at 2.4GHz to communicate with the reciever. 
-- Four channels are for Throuttle, ROLL, Pitch, and Yaw. 
+The transimitter uses PPM protocol with eigh channels at 2.4GHz to communicate with the copter. 
+- Four channels are for Throttle, ROLL, Pitch, and Yaw. 
 - One channel for selecting the flight mode
 - Two channels are dedicated for adjusting the PIDs on flight. 
 <br />
