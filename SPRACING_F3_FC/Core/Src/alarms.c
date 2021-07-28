@@ -4,7 +4,7 @@
  *  Created on: Feb 11, 2020
  *      Author: Dr. Safwan Al-Qadhi
  *      Email: saq.qadi@gmail.com
- *	Some ideas of generating the alarms in this file are based on code found in http://www.brokking.net/ymfc-al_main.html
+ *	The ideas of generating the alarms in this file are based on code found in http://www.brokking.net/ymfc-al_main.html
  */
 
 
