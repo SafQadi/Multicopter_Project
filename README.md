@@ -47,5 +47,5 @@ The code is implemented and compiled under Eclipse for C/C++ using the gcc and g
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-	Contact:	Safwan Al-Qadhi
-			Email: saf.qadi@gmail.com, 
+	Contact:	Dr. Safwan Al-Qadhi
+			Email: saf.qadi@gmail.com
