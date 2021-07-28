@@ -1,12 +1,12 @@
 # Multicopter_Project
 
-In this project I am uisng an STM32F3 chip placed on SPRACINGF3 flight controller to controll a multicopter - Quadcopter. The code is built from scratch in C and C++. Timers are set to decode the reciever data and generate the PWM signals for the speed controlles of the motors. A PID unit controlles the reaction of the copter in two different modes: gyro and level mode. 
+In this project I am uisng an STM32F3 chip placed on SPRACINGF3 flight controller (FC) for a Quadcopter. The code is built from scratch in C and C++. The Microcontroller timers are set to decode the reciever data and generate the PWM signals for the speed controlles of the motors. A PID unit controlles the reaction of the copter in two different modes: gyro and level mode. 
 <br /> 
 <br /> 
 
 ## Gyro/Accelerometer
 An MPU6050 Gyro/accelerometer chip is placed on the SPRACINGF3 board.
-The communication between gyro/accelerometer and the STM32F3 is achieved through an I2C.
+The communication between gyro/accelerometer and the STM32F3 Microcontroller is achieved through an I2C bus.
 <br />
 <br /> 
 
@@ -29,7 +29,7 @@ calculate the angle from both the gyro and the accelerometer.
 <br /> 
 
 ## Compiling
-The code is compiled using Eclipse for C/C++
+The code is implemented and compiled under Eclipse for C/C++ using the gcc and g++ of the mingw-w64-make
 
 ## License
 < >
